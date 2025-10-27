@@ -14,20 +14,6 @@ export function meta({}: Route.MetaArgs) {
   return [
     { title },
     { name: "description", content: description },
-    {
-      name: "keywords",
-      content: [
-        "walking calories calculator",
-        "steps to calories",
-        "steps to miles",
-        "calories burned walking",
-        "brisk walking calories",
-        "10000 steps calories",
-        "walking tips for beginners",
-        "walking for weight loss",
-        "non-equipment exercise",
-      ].join(", "),
-    },
     { name: "robots", content: "index,follow,max-image-preview:large" },
     { property: "og:title", content: title },
     { property: "og:description", content: description },
@@ -449,23 +435,79 @@ export default function Home({ loaderData: { nowISO } }: Route.ComponentProps) {
             name: "How accurate is the walking calories calculator?",
             acceptedAnswer: {
               "@type": "Answer",
-              text: "It uses standard MET equations with pace-based MET values and your weight to estimate energy expenditure.",
+              text: "It uses MET formulas and stride estimates based on your weight, height, sex, and pace to provide reliable planning estimates for most adults.",
             },
           },
           {
             "@type": "Question",
-            name: "How do you convert steps to miles?",
+            name: "How many calories does walking burn per 1,000 steps?",
             acceptedAnswer: {
               "@type": "Answer",
-              text: "Distance equals steps × stride length; we estimate stride from height (~0.414 × height) unless you enter custom.",
+              text: "Most people burn about 30 to 60 calories per 1,000 steps depending on pace, weight, and terrain. Brisk walking increases calorie burn.",
             },
           },
           {
             "@type": "Question",
-            name: "Is 10,000 steps required?",
+            name: "How many steps are in one mile?",
             acceptedAnswer: {
               "@type": "Answer",
-              text: "No, many people benefit at 6–8k steps/day; start lower and increase gradually.",
+              text: "Roughly 2,000 steps equals 1 mile, but stride length varies by height and walking style. I Love Steps estimates stride automatically for better accuracy.",
+            },
+          },
+          {
+            "@type": "Question",
+            name: "How many steps per day should I aim for?",
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: "Research shows 7,000 to 9,000 steps per day supports strong heart and longevity benefits. Beginners can start with 4,000 to 6,000 steps.",
+            },
+          },
+          {
+            "@type": "Question",
+            name: "Is walking good for weight loss?",
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: "Yes. A brisk 30-minute walk burns 120 to 200 calories for most adults. Walking is low-impact and easy to maintain consistently for long-term results.",
+            },
+          },
+          {
+            "@type": "Question",
+            name: "What burns more calories: walking, jogging, or jump rope?",
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: "Jogging and jump rope burn more calories per minute due to higher intensity, but brisk walking is gentler on joints and easier to sustain over time.",
+            },
+          },
+          {
+            "@type": "Question",
+            name: "Are treadmill steps the same as outdoor steps?",
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: "Calories burned are similar at the same speed. Outdoor hills and wind increase energy cost while treadmills help maintain consistent pacing.",
+            },
+          },
+          {
+            "@type": "Question",
+            name: "Can walking improve mental health?",
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: "Daily walking has been shown to reduce stress, improve sleep, boost mood and productivity, and lower anxiety by improving blood flow and reducing cortisol.",
+            },
+          },
+          {
+            "@type": "Question",
+            name: "Do I need special shoes for walking?",
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: "Supportive shoes with cushioning and arch support reduce strain on knees and feet, especially for longer walks or higher step goals.",
+            },
+          },
+          {
+            "@type": "Question",
+            name: "Should I focus more on speed or total steps?",
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: "Both matter, but consistency beats intensity. Frequent walking builds habit strength and improves cardiovascular health even at moderate speeds.",
             },
           },
         ],
@@ -481,7 +523,7 @@ export default function Home({ loaderData: { nowISO } }: Route.ComponentProps) {
       />
 
       {/* TOP BAR */}
-      <div className="w-full border-b border-emerald-100 bg-emerald-50/20/60">
+      <div className="w-full border-b border-emerald-100 bg-emerald-50/60">
         <div className="mx-auto max-w-7xl px-4 py-2 text-sm text-emerald-700">
           Free walking tools • Last updated{" "}
           {new Date(nowISO).toLocaleDateString()}
@@ -489,7 +531,7 @@ export default function Home({ loaderData: { nowISO } }: Route.ComponentProps) {
       </div>
 
       {/* HERO */}
-      <section className="mx-auto max-w-7xl px-4 py-12">
+      <section className="mx-auto max-w-7xl px-4 py-6">
         <div className="grid gap-8 md:grid-cols-2 md:items-center">
           <div className="space-y-5">
             <h1 className="text-4xl font-extrabold tracking-tight">
@@ -533,7 +575,7 @@ export default function Home({ loaderData: { nowISO } }: Route.ComponentProps) {
       {/* CALCULATOR */}
       <section
         id="calculator"
-        className="mx-auto max-w-7xl px-4 py-12 scroll-mt-16"
+        className="mx-auto max-w-7xl px-4 py-6 scroll-mt-16"
       >
         <h2 className="text-2xl font-bold text-emerald-900">
           Walking / Jogging Calories Burned
@@ -543,8 +585,146 @@ export default function Home({ loaderData: { nowISO } }: Route.ComponentProps) {
         </div>
       </section>
 
+      {/* RELATED SITES & FREE WELLNESS TOOLS */}
+      <section
+        id="related-tools"
+        className="mx-auto max-w-7xl px-4 py-12 space-y-10 leading-relaxed"
+      >
+        <h2 className="text-2xl font-bold text-emerald-900 text-center">
+          More Free Health, Walking & Wellness Tools
+        </h2>
+
+        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {/* iLoveWeightLoss */}
+          <a
+            href="https://iloveweightloss.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="block rounded-2xl border border-emerald-200 bg-white p-5 shadow-sm hover:shadow-md transition"
+          >
+            <h3 className="text-lg font-semibold text-emerald-900 flex items-center gap-2">
+              ⚖️ I Love Weight Loss
+            </h3>
+            <p className="text-sm text-emerald-800 mt-1">
+              Weight-loss tips and calculators to help you burn calories by
+              walking, track progress, and stay motivated daily.
+            </p>
+          </a>
+
+          {/* AllFitnessCalculators */}
+          <a
+            href="https://allfitnesscalculators.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="block rounded-2xl border border-emerald-200 bg-white p-5 shadow-sm hover:shadow-md transition"
+          >
+            <h3 className="text-lg font-semibold text-emerald-900 flex items-center gap-2">
+              🏋️ All Fitness Calculators
+            </h3>
+            <p className="text-sm text-emerald-800 mt-1">
+              From calories burned to TDEE and BMI tools, plan smarter goals
+              along your walking journey.
+            </p>
+          </a>
+
+          {/* iLoveHabits */}
+          <a
+            href="https://ilovehabits.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="block rounded-2xl border border-emerald-200 bg-white p-5 shadow-sm hover:shadow-md transition"
+          >
+            <h3 className="text-lg font-semibold text-emerald-900 flex items-center gap-2">
+              🔄 I Love Habits
+            </h3>
+            <p className="text-sm text-emerald-800 mt-1">
+              Build a consistent step-count routine and track streaks that lead
+              to real results.
+            </p>
+          </a>
+
+          {/* iLoveTimers */}
+          <a
+            href="https://ilovetimers.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="block rounded-2xl border border-emerald-200 bg-white p-5 shadow-sm hover:shadow-md transition"
+          >
+            <h3 className="text-lg font-semibold text-emerald-900 flex items-center gap-2">
+              ⏱️ I Love Timers
+            </h3>
+            <p className="text-sm text-emerald-800 mt-1">
+              Interval and workout timers perfect for walking sessions or home
+              cardio breaks.
+            </p>
+          </a>
+
+          {/* FreeTypingCamp */}
+          <a
+            href="https://freetypingcamp.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="block rounded-2xl border border-emerald-200 bg-white p-5 shadow-sm hover:shadow-md transition"
+          >
+            <h3 className="text-lg font-semibold text-emerald-900 flex items-center gap-2">
+              🔤 Free Typing Camp
+            </h3>
+            <p className="text-sm text-emerald-800 mt-1">
+              Sharpen your mind on break days, typing lessons with
+              posture-friendly technique to avoid wrist fatigue.
+            </p>
+          </a>
+
+          {/* LearnWordGames */}
+          <a
+            href="https://learnwordgames.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="block rounded-2xl border border-emerald-200 bg-white p-5 shadow-sm hover:shadow-md transition"
+          >
+            <h3 className="text-lg font-semibold text-emerald-900 flex items-center gap-2">
+              🎯 Learn Word Games
+            </h3>
+            <p className="text-sm text-emerald-800 mt-1">
+              Keep your brain active: word puzzles pair well with a healthy step
+              routine.
+            </p>
+          </a>
+
+          {/* MorseWords */}
+          <a
+            href="https://morsewords.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="block rounded-2xl border border-emerald-200 bg-white p-5 shadow-sm hover:shadow-md transition"
+          >
+            <h3 className="text-lg font-semibold text-emerald-900 flex items-center gap-2">
+              🆘 MorseWords
+            </h3>
+            <p className="text-sm text-emerald-800 mt-1">
+              Convert text to Morse code, try a fun puzzle on your walk break.
+            </p>
+          </a>
+
+          {/* AllTextConverters */}
+          <a
+            href="https://alltextconverters.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="block rounded-2xl border border-emerald-200 bg-white p-5 shadow-sm hover:shadow-md transition"
+          >
+            <h3 className="text-lg font-semibold text-emerald-900 flex items-center gap-2">
+              🔁 All Text Converters
+            </h3>
+            <p className="text-sm text-emerald-800 mt-1">
+              Handy everyday tools for text formatting and quick conversions.
+            </p>
+          </a>
+        </div>
+      </section>
+
       {/* SEO-RICH CONTENT */}
-      <section id="benefits" className="mx-auto max-w-7xl px-4 py-16">
+      <section id="benefits" className="mx-auto max-w-7xl px-4 py-8">
         <Card>
           <h2 className="text-2xl font-bold text-emerald-900">
             Benefits of Walking
@@ -567,7 +747,7 @@ export default function Home({ loaderData: { nowISO } }: Route.ComponentProps) {
         </Card>
       </section>
 
-      <section className="mx-auto max-w-7xl px-4 py-16 space-y-6 leading-relaxed text-emerald-800">
+      <section className="mx-auto max-w-7xl px-4 py-8 space-y-6 leading-relaxed text-emerald-800">
         <h2 className="text-2xl font-bold text-emerald-900">
           Walking Guides, Tips & Step-Goal Strategies
         </h2>
@@ -663,7 +843,7 @@ export default function Home({ loaderData: { nowISO } }: Route.ComponentProps) {
         </p>
       </section>
 
-      <section className="mx-auto max-w-7xl px-4 py-16 space-y-6 leading-relaxed text-emerald-800">
+      <section className="mx-auto max-w-7xl px-4 py-8 space-y-6 leading-relaxed text-emerald-800">
         <h2 className="text-2xl font-bold text-emerald-900">
           Calories Burned by Steps, Distance & Pace
         </h2>
@@ -716,7 +896,7 @@ export default function Home({ loaderData: { nowISO } }: Route.ComponentProps) {
         </p>
       </section>
 
-      <section className="mx-auto max-w-7xl px-4 py-16 space-y-6 leading-relaxed text-emerald-800">
+      <section className="mx-auto max-w-7xl px-4 py-8 space-y-6 leading-relaxed text-emerald-800">
         <h2 className="text-2xl font-bold text-emerald-900">
           Walking Safety, Posture & Injury-Prevention
         </h2>
@@ -757,7 +937,7 @@ export default function Home({ loaderData: { nowISO } }: Route.ComponentProps) {
         </p>
       </section>
 
-      <section className="mx-auto max-w-7xl px-4 py-16 space-y-6 leading-relaxed text-emerald-800">
+      <section className="mx-auto max-w-7xl px-4 py-8 space-y-6 leading-relaxed text-emerald-800">
         <h2 className="text-2xl font-bold text-emerald-900">
           Indoor Step Workouts & No-Equipment Cardio
         </h2>
@@ -795,7 +975,7 @@ export default function Home({ loaderData: { nowISO } }: Route.ComponentProps) {
         </p>
       </section>
 
-      <section className="mx-auto max-w-7xl px-4 py-16 space-y-5 leading-relaxed text-emerald-800">
+      <section className="mx-auto max-w-7xl px-4 py-8 space-y-5 leading-relaxed text-emerald-800">
         <h2 className="text-2xl font-bold text-emerald-900">
           How Many Calories Does Walking Burn?
         </h2>
@@ -816,7 +996,7 @@ export default function Home({ loaderData: { nowISO } }: Route.ComponentProps) {
         </p>
       </section>
 
-      <section className="mx-auto max-w-7xl px-4 py-16 space-y-5 leading-relaxed text-emerald-800">
+      <section className="mx-auto max-w-7xl px-4 py-8 space-y-5 leading-relaxed text-emerald-800">
         <h2 className="text-2xl font-bold text-emerald-900">
           Steps-to-Miles & Distance Guide
         </h2>
@@ -835,7 +1015,7 @@ export default function Home({ loaderData: { nowISO } }: Route.ComponentProps) {
         </p>
       </section>
 
-      <section className="mx-auto max-w-7xl px-4 py-16 space-y-5 leading-relaxed text-emerald-800">
+      <section className="mx-auto max-w-7xl px-4 py-8 space-y-5 leading-relaxed text-emerald-800">
         <h2 className="text-2xl font-bold text-emerald-900">
           Walking for Weight-Loss & Health
         </h2>
@@ -856,7 +1036,7 @@ export default function Home({ loaderData: { nowISO } }: Route.ComponentProps) {
         </p>
       </section>
 
-      <section className="mx-auto max-w-7xl px-4 py-16 space-y-5 leading-relaxed text-emerald-800">
+      <section className="mx-auto max-w-7xl px-4 py-8 space-y-5 leading-relaxed text-emerald-800">
         <h2 className="text-2xl font-bold text-emerald-900">
           Walking vs. Jogging: Which Burns More Calories?
         </h2>
@@ -875,7 +1055,7 @@ export default function Home({ loaderData: { nowISO } }: Route.ComponentProps) {
         </p>
       </section>
 
-      <section className="mx-auto max-w-7xl px-4 py-16 space-y-5 leading-relaxed text-emerald-800">
+      <section className="mx-auto max-w-7xl px-4 py-8 space-y-5 leading-relaxed text-emerald-800">
         <h2 className="text-2xl font-bold text-emerald-900">
           Beginner Tips to Build a Daily Walking Habit
         </h2>
@@ -903,7 +1083,7 @@ export default function Home({ loaderData: { nowISO } }: Route.ComponentProps) {
         </ul>
       </section>
 
-      <section className="mx-auto max-w-7xl px-4 py-16 space-y-5 leading-relaxed text-emerald-800">
+      <section className="mx-auto max-w-7xl px-4 py-8 space-y-5 leading-relaxed text-emerald-800">
         <h2 className="text-2xl font-bold text-emerald-900">
           Safety & Form Checklist for Everyday Walkers
         </h2>
@@ -928,43 +1108,137 @@ export default function Home({ loaderData: { nowISO } }: Route.ComponentProps) {
       </section>
 
       {/* FAQ */}
-      <section id="faq" className="mx-auto max-w-7xl px-4 py-16">
+      <section id="faq" className="mx-auto max-w-7xl px-4 py-12">
         <h2 className="text-2xl font-bold text-emerald-900">
           Frequently Asked Questions
         </h2>
-        <dl className="mt-6 space-y-6">
+        <dl className="mt-8 space-y-8 text-emerald-800">
           <div>
-            <dt className="font-semibold">
+            <dt className="font-semibold text-emerald-900">
               How accurate is the walking calories calculator?
             </dt>
-            <dd className="mt-1 text-emerald-800">
-              It uses MET formulas and stride estimates; good for planning but
-              not a medical device.
+            <dd className="mt-1">
+              It uses MET formulas and your weight, height, sex, and pace to
+              estimate energy burned. While not a medical measurement, it
+              provides a reliable planning estimate for most adults.
             </dd>
           </div>
+
           <div>
-            <dt className="font-semibold">How do I convert steps to miles?</dt>
-            <dd className="mt-1 text-emerald-800">
-              Distance = steps × stride length; we auto-estimate from height or
-              use your custom stride.
-            </dd>
-          </div>
-          <div>
-            <dt className="font-semibold">
-              Is walking enough for weight loss?
+            <dt className="font-semibold text-emerald-900">
+              How many calories does walking burn per 1,000 steps?
             </dt>
-            <dd className="mt-1 text-emerald-800">
-              Walking plus a balanced diet often leads to gradual weight loss,
-              especially at 7–9k+ steps/day.
+            <dd className="mt-1">
+              Most people burn about 30–60 calories per 1,000 steps depending on
+              pace, body weight, and terrain. Brisk walking or hills burn more.
             </dd>
           </div>
+
           <div>
-            <dt className="font-semibold">Is the calculator free?</dt>
-            <dd className="mt-1 text-emerald-800">
-              Yes, all tools on I Love Steps are 100% free to use.
+            <dt className="font-semibold text-emerald-900">
+              How many steps in one mile?
+            </dt>
+            <dd className="mt-1">
+              Roughly 2,000 steps ≈ 1 mile (≈ 1.6 km), but taller people take
+              fewer steps due to longer stride length. Our calculator adjusts
+              automatically for your height.
+            </dd>
+          </div>
+
+          <div>
+            <dt className="font-semibold text-emerald-900">
+              How many steps per day should I aim for?
+            </dt>
+            <dd className="mt-1">
+              Research shows 7,000–9,000 steps/day offer strong heart and
+              longevity benefits. Beginners can start with 4,000–6,000 per day
+              and gradually increase over time.
+            </dd>
+          </div>
+
+          <div>
+            <dt className="font-semibold text-emerald-900">
+              Is walking good for weight loss?
+            </dt>
+            <dd className="mt-1">
+              Yes. A brisk 30-minute walk most days burns 120–200 calories and
+              is easy to sustain. Pair walking with healthier food choices for
+              the best long-term results.
+            </dd>
+          </div>
+
+          <div>
+            <dt className="font-semibold text-emerald-900">
+              What burns more calories: walking, jogging, or jump rope?
+            </dt>
+            <dd className="mt-1">
+              Jogging and jump rope burn more calories per minute, but brisk
+              walking is lower-impact and easier to maintain consistently. All
+              three improve heart health and stamina.
+            </dd>
+          </div>
+
+          <div>
+            <dt className="font-semibold text-emerald-900">
+              Are treadmill steps the same as outdoor steps?
+            </dt>
+            <dd className="mt-1">
+              Yes, calories burned are comparable at equal pace. Hills and wind
+              outside can increase energy cost. Treadmills help with consistency
+              in bad weather.
+            </dd>
+          </div>
+
+          <div>
+            <dt className="font-semibold text-emerald-900">
+              Can walking improve mental health?
+            </dt>
+            <dd className="mt-1">
+              Studies show daily walking reduces stress and improves sleep,
+              mood, productivity, and cognitive function by boosting blood flow
+              and reducing cortisol.
+            </dd>
+          </div>
+
+          <div>
+            <dt className="font-semibold text-emerald-900">
+              Do I need special shoes for walking?
+            </dt>
+            <dd className="mt-1">
+              Supportive sneakers with cushioning and good arch support prevent
+              foot strain and knee issues on longer walks. Replace shoes every
+              500 miles.
+            </dd>
+          </div>
+
+          <div>
+            <dt className="font-semibold text-emerald-900">
+              Should I focus more on speed or total steps?
+            </dt>
+            <dd className="mt-1">
+              Both matter, but <strong>consistency beats intensity</strong>.
+              Step streaks build habit strength; occasional fast walks boost
+              calorie burn and heart fitness.
             </dd>
           </div>
         </dl>
+      </section>
+
+      <section className="mx-auto max-w-7xl px-4 pb-10">
+        <p className="text-xs text-emerald-700 leading-relaxed">
+          <strong>Disclaimer:</strong> I Love Steps provides educational content
+          and general wellness tools designed to help users learn about walking,
+          step-tracking, calories burned, and healthy movement habits. All
+          calculators use widely accepted MET formulas and stride-length
+          estimates, which are intended for informational purposes only. Results
+          are not exact, and energy expenditure can differ by age, fitness
+          level, biomechanics, terrain, footwear, and overall health. Nothing on
+          this site is intended to diagnose, treat, or replace professional
+          medical advice or physical training guidance. If you have underlying
+          health conditions, are pregnant, recovering from injury, or starting a
+          new exercise routine, please consult a qualified healthcare or fitness
+          professional before making lifestyle changes.
+        </p>
       </section>
 
       {/* FOOTER */}
